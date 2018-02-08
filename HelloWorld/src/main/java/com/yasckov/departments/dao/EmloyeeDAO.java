@@ -13,6 +13,17 @@ public class EmloyeeDAO {
     private static String SQL_SELECT_BY_ID = "SELECT * FROM employce where id = ?;";
     private static String SQL_DELETE_BY_ID = "DELETE FROM employce WHERE id = ?;";
 
+    private static EmloyeeDAO EMPLOYEE_DAO = null;
+
+    private EmloyeeDAO(){
+
+    }
+    public static EmloyeeDAO getInstance(){
+        if(EMPLOYEE_DAO == null){
+            EMPLOYEE_DAO = new EmloyeeDAO();
+        }
+        return EMPLOYEE_DAO;
+    }
 
     public static void showAll() {
         MySqlConnection worker = new MySqlConnection();
@@ -31,7 +42,6 @@ public class EmloyeeDAO {
             }
         }catch (SQLException e){
             System.out.println(e.fillInStackTrace());
-
         }
     }
     public static void add(int id, String name, int age, String email, int phoneNumber, String birthday){
@@ -84,5 +94,6 @@ public class EmloyeeDAO {
 
         showAll();
     }
+
 
 }
