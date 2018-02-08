@@ -1,4 +1,22 @@
 package com.yasckov.departments.util;
 
-public class EmployeeController {
+import javax.servlet.http.HttpServlet;
+
+public class EmployeeController extends HttpServlet{
+    private static final long serialVersionUID = 1L;
+
+    private static final String PAGE_EDIT = "/EditBook.jsp";
+    private static final String PAGE_LIST = "/ListBook.jsp";
+
+    private static final String ACTION_VALUE = "action";
+    private static final String ACTION_DELETE = "delete";
+    private static final String ACTION_EDIT = "edit";
+    private static final String ACTION_LIST = "list";
+    private static final String ATTRIBUTE_ITEM = "item";
+    private static final String ATTRIBUTE_LIST = "list";
+
+    private static final String PARAMETER_ENTITY_ID = "id";
+    private static final String PARAMETER_ENTITY_NAME = "name";
+    private static final String PARAMETER_ENTITY_AUTHOR = "author";
+    private static final String PARAMETER_ENTITY_DATE = "date";
 }
