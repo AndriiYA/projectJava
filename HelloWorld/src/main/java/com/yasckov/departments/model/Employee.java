@@ -2,7 +2,16 @@ package com.yasckov.departments.model;
 
 import java.util.Date;
 
-public class Employee {
+public class Employee implements Comparable<Employee>{
+    public static final String LIST = "eployeers";
+    public static final String ITEM = "employee";
+    public static final String FIELD_NAME = "name";
+    public static final String FIELD_ID = "name";
+    public static final String FIELD_AGE = "name";
+    public static final String FIELD_EMAIL = "name";
+    public static final String FIELD_PHONE_NUMBER = "name";
+    public static final String FIELD_BIRTHDAY = "name";
+
     private  String name;
     private Integer id;
     private Integer age;
@@ -73,6 +82,11 @@ public class Employee {
     }
 
 
+    public int compareTo(Employee o) {
+        return this.name.compareTo(o.getName());
+    }
 
-
+    public boolean isNew(){
+        return id==null;
+    }
 }

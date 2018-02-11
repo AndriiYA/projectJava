@@ -5,7 +5,7 @@ import com.yasckov.departments.model.Employee;
 import java.sql.*;
 
 public class EmloyeeDAO {
-
+/*
     private static String SQL_INSERT = "INSERT INTO employce VALUES(?, ?, ?, ?, ?, ?);";
     private static String SQL_UPDATE = "UPDATE employce set name=?, age=?, email =?, phoneNumber =?, birthday =? where id=?";
     private static String SQL_SELECT = "SELECT * FROM employce;";
@@ -95,5 +95,5 @@ public class EmloyeeDAO {
         showAll();
     }
 
-
+*/
 }

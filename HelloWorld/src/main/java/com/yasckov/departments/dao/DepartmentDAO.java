@@ -1,8 +1,6 @@
-package com.yaskov.common.DAO.Implementation;
+package com.yasckov.departments.dao;
 
-import com.yaskov.common.DAO.DepartmentDao;
-import com.yaskov.common.model.Department;
-import com.yaskov.common.services.MySqlConnection;
+import com.yasckov.departments.model.Department;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DepartmentDaoImpl implements DepartmentDao {
+public class DepartmentDAO {
+
     private static String SQL_INSERT = "INSERT INTO department VALUES(?, ?);";
     private static String SQL_UPDATE = "UPDATE department set name=? where id=?";
     private static String SQL_SELECT = "SELECT * FROM department;";
@@ -55,5 +54,4 @@ public class DepartmentDaoImpl implements DepartmentDao {
 
         return null;
     }
-
 }
