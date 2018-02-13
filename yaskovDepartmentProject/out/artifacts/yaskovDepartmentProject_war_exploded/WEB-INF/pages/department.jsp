@@ -22,7 +22,8 @@
 
             <tr>
                 <td colspan = "2">
-                    <input type = "submit" value = "Submit"/>
+                    <--input type = "submit" value = "Submit"/>
+                    <a href="departments.jsp">All departments</a>
                 </td>
             </tr>
         </table>
