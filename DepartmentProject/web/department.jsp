@@ -15,7 +15,7 @@
 <body>
 
 <table>
-    <c:forEach items="${departments}" var="dep">
+    <c:forEach items="${department}" var="dep">
         <c:out value="${dep.name}"/><a href="?page='editDepartment'&departmentId='${dep.id}'">Edit</a>
     </c:forEach>
 

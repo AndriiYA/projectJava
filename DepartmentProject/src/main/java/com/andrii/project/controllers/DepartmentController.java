@@ -3,6 +3,7 @@ package com.andrii.project.controllers;
 import com.andrii.project.Dao.DepartmentDao;
 import com.andrii.project.model.Department;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,27 +13,55 @@ import java.util.List;
 
 public class DepartmentController extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
-    private static final String ACTION_VALUE = "action";
-    private static final String ACTION_DELETE = "delete";
-    private static final String PARAMETER_ENTITY_ID = "id";
-    private static final String PAGE_LIST = "/Department.jsp";
-    private static final String ATTRIBUTE_LIST = "department";
-    private static final String ACTION_EDIT = "edit";
-    private static final String PAGE_EDIT = "/EditDepartment.jsp";
-    private static final String ATTRIBUTE_ITEM = "item";
-    private static final String ACTION_LIST = "list";
-
+    private static String INSERT_OR_EDIT = "/departmen.jsp";
+    private static String LIST_DEPARTMENT = "/listDepartment.jsp";
     private DepartmentDao dao;
 
+    public DepartmentController(){
+        super();
+        dao = new DepartmentDao();
+    }
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        Department department = new Department();
+        department.setName(request.getParameter("name"));
+        department.setId(Long.valueOf(request.getParameter("departmentId")));
+        String departmentId = request.getParameter("departmentId");
+
+
+        RequestDispatcher view = request.getRequestDispatcher(LIST_DEPARTMENT);
+        request.setAttribute("departments", dao.selectAll());
+        view.forward(request,response);
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-/*
+
+  String forward = "";
+        String action = request.getParameter("action");
+
+        if(action.equalsIgnoreCase("delete")){
+            Long deparmentId = Long.parseLong(request.getParameter("departmentId"));
+            dao.delete(deparmentId);
+            forward = LIST_DEPARTMENT;
+            request.setAttribute("departments", dao.selectAll());
+        }else if (action.equalsIgnoreCase("edit")){
+            forward = INSERT_OR_EDIT;
+            Long departmentId = Long.parseLong(request.getParameter("departmentId"));
+            Department department = dao.select(departmentId);
+            request.setAttribute("department", department);
+        }else if (action.equalsIgnoreCase("listDepartment")){
+            forward = LIST_DEPARTMENT;
+            request.setAttribute("departments", dao.selectAll());
+        }else{
+            forward = INSERT_OR_EDIT;
+        }
+        RequestDispatcher view = request.getRequestDispatcher(forward);
+        view.forward(request,response);
+
+        /*
         DepartmentDao departmentDao = new DepartmentDao();
         String page = request.getParameter("page");
         if(page == null){
@@ -44,7 +73,6 @@ public class DepartmentController extends HttpServlet {
             Department department = departmentDao.select(departmentId);
             request.setAttribute("department", department);
         }
-*/
 
     String forward = "";
     String page = request.getParameter("page");
@@ -71,7 +99,9 @@ public class DepartmentController extends HttpServlet {
             forward = PAGE_LIST;
             break;
     }
+
         request.getRequestDispatcher(page).forward(request,response);
+        */
     }
 
 }

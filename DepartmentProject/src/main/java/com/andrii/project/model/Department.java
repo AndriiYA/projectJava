@@ -3,8 +3,8 @@ package com.andrii.project.model;
 import java.util.List;
 
 public class Department {
-    public static final String FIELD_ID = "id";
-    public static final String FIELD_NAME = "name";
+  //  public static final String FIELD_ID = "id";
+  //  public static final String FIELD_NAME = "name";
 
     private Long id;
     private String name;
@@ -45,6 +45,6 @@ public class Department {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", employees=" + employees +
-                ']';
+                ']'+ '\'';
     }
 }
